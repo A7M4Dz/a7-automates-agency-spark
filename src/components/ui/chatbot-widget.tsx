@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Minimize2, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -94,17 +93,26 @@ const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({
     try {
       console.log('Sending message to webhook:', userMessage);
       
+      const requestBody = {
+        message: userMessage,
+        timestamp: new Date().toISOString(),
+        user: 'website_visitor',
+        source: 'a7_website_chatbot'
+      };
+      
+      console.log('Request body:', requestBody);
+      
       const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify({
-          message: userMessage,
-          timestamp: new Date().toISOString(),
-          user: 'website_visitor'
-        }),
+        body: JSON.stringify(requestBody),
       });
+
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -114,12 +122,16 @@ const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({
       console.log('Webhook response:', data);
       
       // Extract the AI response from the webhook response
-      let botResponse = "Thank you for your message. I'm processing your request.";
+      let botResponse = "Thank you for your message. I'm processing your request and will get back to you shortly.";
       
       if (data.response) {
         botResponse = data.response;
       } else if (data.message) {
         botResponse = data.message;
+      } else if (data.reply) {
+        botResponse = data.reply;
+      } else if (data.answer) {
+        botResponse = data.answer;
       } else if (typeof data === 'string') {
         botResponse = data;
       }
