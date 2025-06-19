@@ -1,6 +1,5 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bot, Workflow, MessageSquare, Database, FileText, Calendar } from "lucide-react";
+import { Bot, Workflow, MessageSquare, Database, FileText, Calendar, BarChart3 } from "lucide-react";
 
 const Services = () => {
   const services = [
@@ -15,6 +14,12 @@ const Services = () => {
       title: "Process Automation",
       description: "Streamline repetitive workflows and eliminate manual data entry across your business operations.",
       features: ["Task automation", "Data synchronization", "Error reduction"]
+    },
+    {
+      icon: BarChart3,
+      title: "Power BI Dashboards",
+      description: "Automated reporting and data visualization with intelligent insights and real-time business intelligence.",
+      features: ["Automated report generation", "Real-time data visualization", "Custom dashboard creation"]
     },
     {
       icon: Database,
@@ -43,7 +48,7 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section id="services" className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-space font-bold mb-6">

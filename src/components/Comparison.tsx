@@ -1,11 +1,10 @@
-
 import { Compare } from "@/components/ui/compare";
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock, Zap, User, Bot } from "lucide-react";
 
 const Comparison = () => {
   return (
-    <section className="py-24 bg-white">
+    <section id="comparison" className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-space font-bold mb-6">
