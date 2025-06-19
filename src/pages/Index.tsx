@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -6,6 +5,7 @@ import Comparison from "@/components/Comparison";
 import Benefits from "@/components/Benefits";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import ChatbotWidget from "@/components/ui/chatbot-widget";
 
 const Index = () => {
   return (
@@ -23,6 +23,7 @@ const Index = () => {
         <CTA />
       </div>
       <Footer />
+      <ChatbotWidget />
     </div>
   );
 };
